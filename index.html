@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ГЕОСОФТ — Фотограмметрическая обработка данных БПЛА</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #060b1a;
+            color: #f5f7fb;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        :root {
+            --bg: #060b1a;
+            --card: #10182d;
+            --card2: #16213d;
+            --accent: #4ea1ff;
+            --accent2: #7cc2ff;
+            --text: #f5f7fb;
+            --muted: #9aa7c7;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+
+        .container {
+            width: min(1200px, 92%);
+            margin: auto;
+        }
+
+        section {
+            padding: 120px 0;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            background: rgba(6, 11, 26, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-inner {
+            height: 82px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.25s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(78, 161, 255, 0.25);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top left,
+                    rgba(78, 161, 255, 0.18),
+                    transparent 35%),
+                radial-gradient(circle at bottom right,
+                    rgba(124, 194, 255, 0.1),
+                    transparent 35%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            line-height: 1.02;
+            margin-bottom: 28px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 720px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-card {
+            background: linear-gradient(180deg, #16223f, #10182f);
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            padding: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-card img {
+            width: 100%;
+            border-radius: 18px;
+            margin-bottom: 22px;
+        }
+
+        .mini-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .mini-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 22px;
+        }
+
+        .mini-box h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .mini-box p {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        /* SECTION TITLE */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 56px;
+            margin-bottom: 18px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            max-width: 760px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        /* PIPELINE */
+
+        .pipeline {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 220px;
+            background: linear-gradient(180deg, var(--card), var(--card2));
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 34px;
+            position: relative;
+        }
+
+        .step.ready {
+            border: 1px solid rgba(78, 161, 255, 0.45);
+            box-shadow: 0 0 40px rgba(78, 161, 255, 0.12);
+        }
+
+        .soon {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.08);
+            color: #b6c5e4;
+            letter-spacing: 0.5px;
+        }
+
+        .done {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(78, 161, 255, 0.18);
+            color: #8dc7ff;
+            letter-spacing: 0.5px;
+        }
+
+        .step h3 {
+            font-size: 26px;
+            margin-bottom: 14px;
+        }
+
+        .step p {
+            color: var(--muted);
+        }
+
+        /* FEATURES */
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: linear-gradient(180deg, var(--card), var(--card2));
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 34px;
+            transition: 0.25s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(78, 161, 255, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 14px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+        }
+
+        /* TABLE */
+
+        .table-wrapper {
+            background: linear-gradient(180deg, var(--card), var(--card2));
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 26px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        th,
+        td {
+            padding: 22px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: left;
+        }
+
+        th {
+            color: white;
+            font-size: 18px;
+        }
+
+        td {
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: #83d0ff;
+            font-weight: 700;
+        }
+
+        /* FUTURE */
+
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .future-card {
+            background: linear-gradient(180deg, var(--card), var(--card2));
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 36px;
+        }
+
+        .future-card h3 {
+            font-size: 28px;
+            margin-bottom: 18px;
+        }
+
+        .future-card p {
+            color: var(--muted);
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 120px;
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-logo {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-text {
+            max-width: 900px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .resident {
+            margin-top: 18px;
+            color: #8dc7ff;
+            font-weight: 600;
+        }
+
+        .support-logos {
+            margin-top: 50px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .support-logos img {
+            background: white;
+            border-radius: 14px;
+            padding: 12px;
+            max-height: 110px;
+            object-fit: contain;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:1100px) {
+
+            .hero-grid,
+            .future-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+        }
+
+        @media(max-width:760px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .section-title h2 {
+                font-size: 40px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="container nav-inner">
+
+            <div class="logo">
+                ГЕО<span>СОФТ</span>
+            </div>
+
+            <div class="nav-links">
+                <a href="#technology">Технология</a>
+                <a href="#advantages">Преимущества</a>
+                <a href="#tests">Испытания</a>
+                <a href="#future">Развитие</a>
+            </div>
+
+            <a href="https://t.me/smns_id" target="_blank" class="btn">
+                Связаться
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container hero-grid">
+
+            <div>
+
+                <h1>
+                    Фотограмметрическая обработка данных БПЛА
+                </h1>
+
+                <p>
+                    Высокопроизводительное ядро фотограмметрического
+                    уравнивания аэрофотоснимков с использованием
+                    оптимизированных алгоритмов обработки и снижением
+                    вычислительных затрат.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#tests" class="btn">
+                        Результаты испытаний
+                    </a>
+
+                    <a href="#technology" class="btn btn-secondary">
+                        О технологии
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-card">
+
+                <img src="images/interface.png" alt="Интерфейс ГЕОСОФТ">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TECHNOLOGY -->
+
+    <section id="technology">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Технология обработки</h2>
+
+                <p>
+                    Архитектура системы ориентирована на разработку
+                    высокопроизводительного ядра фотограмметрического
+                    уравнивания для обработки данных БПЛА.
+                </p>
+
+            </div>
+
+            <div class="pipeline">
+
+                <div class="step ready">
+
+                    <div class="done">ГОТОВО И ПРОТЕСТИРОВАНО</div>
+
+                    <h3>
+                        Фотограмм.<br>
+                        уравнивание
+                    </h3>
+
+                    <p>
+                        Расчет параметров ориентирования
+                        с использованием условия компланарности
+                        и оптимизированных весовых моделей.
+                    </p>
+
+                </div>
+
+                <div class="step ready">
+
+                    <div class="done">ГОТОВО И ПРОТЕСТИРОВАНО</div>
+
+                    <h3>
+                        Уравненное<br>
+                        облако точек
+                    </h3>
+
+                    <p>
+                        Формирование уравненного облака
+                        точек для последующей
+                        фотограмметрической обработки.
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="soon">В РАЗРАБОТКЕ</div>
+
+                    <h3>
+                        Предобработка<br>
+                        данных
+                    </h3>
+
+                    <p>
+                        Автоматизированная подготовка
+                        и первичная обработка
+                        аэрофотоснимков.
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="soon">В РАЗРАБОТКЕ</div>
+
+                    <h3>
+                        Поиск связующих<br>
+                        точек
+                    </h3>
+
+                    <p>
+                        Автоматическое определение
+                        характерных элементов
+                        и формирование стереопар.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ADVANTAGES -->
+
+    <section id="advantages">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Преимущества системы</h2>
+
+                <p>
+                    Программное обеспечение ориентировано на снижение
+                    вычислительных затрат и ускорение обработки
+                    материалов аэрофотосъемки.
+                </p>
+
+            </div>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Высокая скорость обработки</h3>
+                    <p>
+                        Оптимизированные алгоритмы фотограмметрического
+                        уравнивания ускоряют вычисления.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛰️</div>
+                    <h3>Снижение объема полевых работ</h3>
+                    <p>
+                        Снижение объема наземных геодезических работ
+                        и сокращение времени подготовки данных.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Низкое потребление памяти</h3>
+                    <p>
+                        Возможность работы на менее производительном
+                        вычислительном оборудовании.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Интеграция в сторонние системы</h3>
+                    <p>
+                        Возможность внедрения алгоритмов
+                        в существующие геоинформационные решения.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🇷🇺</div>
+                    <h3>Российское программное обеспечение</h3>
+                    <p>
+                        Развитие отечественных решений
+                        в области обработки данных БПЛА.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🚁</div>
+                    <h3>Масштабируемая архитектура</h3>
+                    <p>
+                        Возможность дальнейшего развития
+                        и расширения функциональности системы.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TESTS -->
+
+    <section id="tests">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Результаты испытаний</h2>
+
+                <p>
+                    Сравнение результатов обработки контрольных точек
+                    с программным обеспечением Photomod
+                    на материалах наземной фотограмметрической
+                    съемки фасада городской обсерватории.
+                </p>
+
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Метод обработки</th>
+                            <th>СКО X (см)</th>
+                            <th>СКО Y (см)</th>
+                            <th>СКО Z (см)</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Метод компланарности</td>
+                            <td class="highlight">0.16 см</td>
+                            <td class="highlight">0.26 см</td>
+                            <td class="highlight">0.43 см</td>
+                        </tr>
+
+                        <tr>
+                            <td>Метод разностей</td>
+                            <td class="highlight">0.16 см</td>
+                            <td class="highlight">0.26 см</td>
+                            <td class="highlight">0.43 см</td>
+                        </tr>
+
+                        <tr>
+                            <td>Photomod</td>
+                            <td>0.36 см</td>
+                            <td>0.31 см</td>
+                            <td>0.58 см</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FUTURE -->
+
+    <section id="future">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Перспективы развития</h2>
+
+                <p>
+                    Дальнейшее развитие проекта ориентировано
+                    на автоматизацию обработки и развитие
+                    отечественных образовательных решений.
+                </p>
+
+            </div>
+
+            <div class="future-grid">
+
+                <div class="future-card">
+
+                    <h3>Обработка на борту БПЛА</h3>
+
+                    <p>
+                        Перспектива внедрения алгоритмов
+                        в вычислительные системы беспилотников
+                        для снижения задержек обработки.
+                    </p>
+
+                </div>
+
+                <div class="future-card">
+
+                    <h3>Real-time обработка</h3>
+
+                    <p>
+                        Возможность приближения обработки
+                        к режиму реального времени.
+                    </p>
+
+                </div>
+
+                <div class="future-card">
+
+                    <h3>Интеграция машинного зрения</h3>
+
+                    <p>
+                        Использование методов Computer Vision
+                        для полностью автоматической обработки данных.
+                    </p>
+
+                </div>
+
+                <div class="future-card">
+
+                    <h3>Образовательное применение</h3>
+
+                    <p>
+                        Использование системы в образовательных целях
+                        как доступного и легковесного решения
+                        для обучения фотограмметрической обработке.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-logo">
+                ГЕО<span>СОФТ</span>
+            </div>
+
+            <div class="footer-text">
+
+                Ядро программы построения и уравнивания аналитической фототриангуляции на основе условия компланарности векторов ГеоСофт.
+
+                <div class="resident">
+                    Резидент IT-парка Казань
+                </div>
+
+                <br><br>
+
+                Проект реализован при поддержке
+                Фонда содействия инновациям
+                в рамках программы «Студенческий стартап»
+                мероприятия «Платформа университетского
+                технологического предпринимательства»
+                федерального проекта «Технологии».
+
+            </div>
+
+            <div class="support-logos">
+
+                <img src="images/fsi.png"
+                    alt="ФСИ">
+
+                <img src="images/platform.png"
+                    alt="Платформа университетского технологического предпринимательства">
+
+            </div>
+
+        </div>
+        
+        <div style="
+            margin-top:60px;
+            padding-top:30px;
+            border-top:1px solid rgba(255,255,255,0.06);
+            color:#7f8cab;
+            font-size:14px;
+            text-align:center;
+            ">
+                Политика конфиденциальности • © 2026 ГЕОСОФТ Все права защищены.
+        </div>
+    </footer>
+
+</body>
+
+</html>
