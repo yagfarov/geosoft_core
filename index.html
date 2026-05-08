@@ -550,6 +550,54 @@
         
         }
 
+        .support-row {
+
+            margin-top: 50px;
+        
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        
+            gap: 60px;
+        
+            flex-wrap: wrap;
+        
+        }
+        
+        .support-text {
+        
+            flex: 1;
+        
+            max-width: 760px;
+        
+            color: var(--muted);
+        
+            line-height: 1.8;
+        
+            font-size: 18px;
+        
+        }
+        
+        .support-logos {
+        
+            display: flex;
+        
+            gap: 30px;
+        
+            align-items: center;
+        
+        }
+        
+        .support-logos img {
+        
+            max-height: 90px;
+        
+            width: auto;
+        
+            object-fit: contain;
+        
+        }
+
         /* RESPONSIVE */
 
         @media(max-width:1100px) {
@@ -711,61 +759,6 @@
 
     </section>
 
-    <section id="interface-showcase">
-
-        <div class="container">
-    
-            <div class="interface-grid">
-    
-                <div class="interface-text">
-    
-                    <div class="section-badge">
-                        ИНТЕРФЕЙС СИСТЕМЫ
-                    </div>
-    
-                    <h2>
-                        Инженерный интерфейс
-                        фотограмметрической
-                        обработки
-                    </h2>
-    
-                    <p>
-    
-                        Программный комплекс позволяет
-                        выполнять фотограмметрическое
-                        уравнивание, анализ параметров
-                        решения и визуализацию
-                        уравненного облака точек.
-    
-                    </p>
-    
-                    <p>
-    
-                        Интерфейс ориентирован
-                        на инженерные и научные задачи,
-                        включая настройку параметров
-                        уравнивания и анализ
-                        вычислительного процесса.
-    
-                    </p>
-    
-                </div>
-    
-                <div class="interface-preview">
-    
-                    <img
-                        src="images/interface.png"
-                        alt="Интерфейс системы"
-                        onclick="openModal()"
-                    >
-    
-                </div>
-    
-            </div>
-    
-        </div>
-    
-    </section>
 
     <!-- TECHNOLOGY -->
     
@@ -1083,47 +1076,28 @@
 
     <!-- FOOTER -->
 
-    <footer>
+   <footer>
 
         <div class="container">
-
+        
             <div class="footer-logo">
                 ГЕО<span>СОФТ</span>
             </div>
-
+        
             <div class="footer-text">
-
+        
                 Ядро программы построения и уравнивания аналитической фототриангуляции на основе условия компланарности векторов ГеоСофт.
-
+        
                 <div class="resident">
                     Резидент IT-парка Казань
                 </div>
-
-                <br><br>
-
-                Проект реализован при поддержке
-                Фонда содействия инновациям
-                в рамках программы «Студенческий стартап»
-                мероприятия «Платформа университетского
-                технологического предпринимательства»
-                федерального проекта «Технологии».
-
+        
             </div>
-
+        
             <div class="support-row">
-
-                <div class="support-logos">
-            
-                    <img src="images/fsi.png"
-                        alt="ФСИ">
-            
-                    <img src="images/platform.png"
-                        alt="ПУТП">
-            
-                </div>
-            
+        
                 <div class="support-text">
-            
+        
                     Проект реализован при поддержке
                     Фонда содействия инновациям
                     в рамках программы
@@ -1133,11 +1107,21 @@
                     технологического предпринимательства»
                     федерального проекта
                     «Технологии».
-            
+        
                 </div>
-            
+        
+                <div class="support-logos">
+        
+                    <img src="images/fsi.png"
+                        alt="ФСИ">
+        
+                    <img src="images/platform.png"
+                        alt="ПУТП">
+        
+                </div>
+        
             </div>
-
+        
         </div>
         
         <div style="
@@ -1147,10 +1131,11 @@
             color:#7f8cab;
             font-size:14px;
             text-align:center;
-            ">
-                Политика конфиденциальности • © 2026 ГЕОСОФТ Все права защищены.
+        ">
+            Политика конфиденциальности • © 2026 ГЕОСОФТ Все права защищены.
         </div>
-    </footer>
+        
+        </footer>
 
     <div id="imageModal" class="modal">
 
