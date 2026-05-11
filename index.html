@@ -179,7 +179,7 @@
         }
 
         .hero-card img {
-            width: 125%;
+            width: 100%;
             max-width: 900px;
             border-radius: 18px;
             transition: 0.3s;
@@ -190,28 +190,6 @@
             transform: scale(1.02);
         }
 
-        .mini-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .mini-box {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 22px;
-        }
-
-        .mini-box h3 {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .mini-box p {
-            font-size: 14px;
-            color: var(--muted);
-        }
 
         /* SECTION TITLE */
 
@@ -326,12 +304,84 @@
 
         /* TABLE */
 
-        .table-wrapper {
-            background: linear-gradient(180deg, var(--card), var(--card2));
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            padding: 26px;
-            overflow-x: auto;
+        .results-table-wrapper {
+
+            margin-top: 60px;
+        
+        }
+        
+        .results-subtitle {
+        
+            font-size: 28px;
+        
+            margin-bottom: 24px;
+        
+            color: #ffffff;
+        
+        }
+        
+        .second-table {
+        
+            margin-top: 70px;
+        
+        }
+        
+        .results-table {
+        
+            width: 100%;
+        
+            border-collapse: collapse;
+        
+            background:
+                rgba(255,255,255,0.02);
+        
+            border:
+                1px solid rgba(255,255,255,0.08);
+        
+            overflow: hidden;
+        
+            border-radius: 18px;
+        
+        }
+        
+        .results-table th {
+        
+            background:
+                rgba(255,255,255,0.04);
+        
+            font-weight: 700;
+        
+            color: white;
+        
+        }
+        
+        .results-table th,
+        .results-table td {
+        
+            padding: 22px;
+        
+            border:
+                1px solid rgba(255,255,255,0.08);
+        
+            text-align: left;
+        
+            vertical-align: middle;
+        
+        }
+        
+        .results-table td {
+        
+            color: #b7c2de;
+        
+            line-height: 1.6;
+        
+        }
+        
+        .results-table tr:hover {
+        
+            background:
+                rgba(255,255,255,0.02);
+        
         }
 
         table {
@@ -357,10 +407,6 @@
             font-size: 17px;
         }
 
-        .highlight {
-            color: #83d0ff;
-            font-weight: 700;
-        }
 
         /* FUTURE */
 
@@ -384,77 +430,6 @@
 
         .future-card p {
             color: var(--muted);
-        }
-
-        .interface-grid {
-
-            display: grid;
-            grid-template-columns: 0.9fr 1.4fr;
-        
-            gap: 60px;
-            align-items: center;
-        
-        }
-        
-        .interface-text h2 {
-        
-            font-size: 54px;
-            line-height: 1.05;
-        
-            margin-bottom: 30px;
-        
-        }
-        
-        .interface-text p {
-        
-            color: var(--muted);
-            font-size: 18px;
-        
-            margin-bottom: 22px;
-        
-        }
-        
-        .interface-preview img {
-        
-            width: 100%;
-        
-            border-radius: 24px;
-        
-            cursor: pointer;
-        
-            transition: 0.3s;
-        
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.45);
-        
-        }
-        
-        .interface-preview img:hover {
-        
-            transform: scale(1.01);
-        
-        }
-        
-        .section-badge {
-        
-            display: inline-block;
-        
-            margin-bottom: 22px;
-        
-            padding: 8px 16px;
-        
-            border-radius: 12px;
-        
-            background:
-                rgba(78,161,255,0.12);
-        
-            color: #7cc2ff;
-        
-            font-size: 13px;
-            font-weight: 700;
-        
-            letter-spacing: 1px;
-        
         }
 
         /* FOOTER */
@@ -487,68 +462,6 @@
             font-weight: 600;
         }
 
-        .support-logos {
-            margin-top: 50px;
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .support-logos img {
-            background: transparent;
-            border-radius: 0;
-            padding: 0;
-            max-height: 140px;
-            object-fit: contain;
-        }
-        .support-logos {
-            margin-top: 50px;
-            display: flex;
-            gap: 60px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .support-row {
-
-            margin-top: 50px;
-        
-            display: flex;
-            align-items: center;
-        
-            gap: 40px;
-        
-            flex-wrap: wrap;
-        
-        }
-        
-        .support-text {
-        
-            max-width: 700px;
-        
-            color: var(--muted);
-        
-            line-height: 1.8;
-        
-        }
-        
-        .support-logos {
-        
-            display: flex;
-            gap: 30px;
-        
-            align-items: center;
-        
-        }
-        
-        .support-logos img {
-        
-            max-height: 90px;
-        
-            width: auto;
-        
-        }
 
         .support-row {
 
@@ -596,40 +509,6 @@
         
             object-fit: contain;
         
-        }
-
-        /* RESPONSIVE */
-
-        @media(max-width:1100px) {
-
-            .hero-grid,
-            .future-grid,
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 52px;
-            }
-        }
-
-        @media(max-width:760px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding-top: 120px;
-            }
-
-            .section-title h2 {
-                font-size: 40px;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
         }
 
         .modal {
@@ -683,273 +562,352 @@
         
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        .footer-bottom {
+
+            margin-top: 60px;
         
-        @media (max-width: 900px) {
+            padding-top: 30px;
         
-            nav {
+            border-top:
+                1px solid rgba(255,255,255,0.06);
         
-                padding: 18px 24px;
+            color: #7f8cab;
         
-            }
+            font-size: 14px;
         
-            .nav-links {
-        
-                display: none;
-        
-            }
-        
-            .hero {
-        
-                padding-top: 120px;
-        
-            }
-        
-            .hero-grid {
-        
-                grid-template-columns: 1fr;
-        
-                gap: 50px;
-        
-            }
-        
-            .hero h1 {
-        
-                font-size: 64px;
-                line-height: 0.95;
-        
-            }
-        
-            .hero p {
-        
-                font-size: 20px;
-        
-            }
-        
-            .hero-buttons {
-        
-                flex-direction: column;
-                align-items: flex-start;
-        
-            }
-        
-            .hero-card img {
-        
-                width: 100%;
-        
-            }
-        
-            .tech-grid {
-        
-                grid-template-columns: 1fr;
-        
-            }
-        
-            .advantages-grid {
-        
-                grid-template-columns: 1fr;
-        
-            }
-        
-            .future-grid {
-        
-                grid-template-columns: 1fr;
-        
-            }
-        
-            .comparison-table {
-        
-                overflow-x: auto;
-        
-            }
-        
-            table {
-        
-                min-width: 700px;
-        
-            }
-        
-            .support-row {
-        
-                flex-direction: column;
-        
-                align-items: flex-start;
-        
-            }
-        
-            .support-logos {
-        
-                margin-top: 20px;
-        
-            }
-        
-            .support-logos img {
-        
-                max-height: 60px;
-        
-            }
-        
-            .footer-logo {
-        
-                font-size: 42px;
-        
-            }
-        
+            text-align: center;
+            
         }
-        
-        /* =========================
-           SMALL MOBILE
-        ========================= */
-        
-        @media (max-width: 600px) {
-        
-            section {
-        
-                padding: 90px 24px;
-        
-            }
-        
-            .hero h1 {
-        
-                font-size: 48px;
-        
-            }
-        
-            .hero p {
-        
-                font-size: 18px;
-        
-            }
-        
-            h2 {
-        
-                font-size: 42px !important;
-                line-height: 1.05;
-        
-            }
-        
-            .btn {
-        
-                width: 100%;
-        
-                justify-content: center;
-        
-            }
-        
-            .hero-buttons {
-        
-                width: 100%;
-        
-            }
-        
-            .tech-card,
-            .advantage-card,
-            .future-card {
-        
-                padding: 28px;
-        
-            }
-        
-            .modal-content {
-        
-                max-width: 98%;
-                max-height: 90%;
-        
-            }
-        
-            .close {
-        
-                top: 10px;
-                right: 20px;
-        
-                font-size: 42px;
-        
-            }
-        
-        }
-    </style>
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    nav {
+
+        padding: 18px 24px;
+
+    }
+
+    .nav-links {
+
+        display: none;
+
+    }
+
+    .hero {
+
+        padding-top: 120px;
+
+    }
+
+    .hero-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 64px;
+
+        line-height: 0.95;
+
+    }
+
+    .hero p {
+
+        font-size: 20px;
+
+    }
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .hero-card {
+
+        display: flex;
+
+        justify-content: center;
+
+    }
+
+    .hero-card img {
+
+        width: 100%;
+
+        max-width: 700px;
+
+    }
+
+
+
+    .future-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    table {
+
+        min-width: 700px;
+
+    }
+
+    .results-table-wrapper {
+
+        overflow-x: auto;
+
+    }
+
+    .results-table {
+
+        min-width: 850px;
+
+    }
+
+    .support-row {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 30px;
+
+    }
+
+    .support-logos {
+
+        display: flex;
+
+        gap: 20px;
+
+        align-items: center;
+
+    }
+
+    .support-logos img {
+
+        max-height: 60px;
+
+        width: auto;
+
+    }
+
+    .footer-logo {
+
+        font-size: 42px;
+
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    section {
+
+        padding: 90px 24px;
+
+    }
+
+    .hero {
+
+        padding-top: 100px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 48px;
+
+        line-height: 1;
+
+    }
+
+    .hero p {
+
+        font-size: 18px;
+
+        line-height: 1.7;
+
+    }
+
+    h2 {
+
+        font-size: 42px !important;
+
+        line-height: 1.05;
+
+    }
+
+    .btn {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+    .hero-buttons {
+
+        width: 100%;
+
+    }
+
+    .future-card,
+    .feature-card,
+    .step {
+    
+        padding: 28px;
+    
+    }
+
+    .modal-content {
+
+        max-width: 98%;
+
+        max-height: 90%;
+
+    }
+
+    .close {
+
+        top: 10px;
+
+        right: 20px;
+
+        font-size: 42px;
+
+    }
+
+    .results-table-wrapper {
+
+        overflow-x: auto;
+
+    }
+
+    .results-table {
+
+        min-width: 850px;
+
+    }
+
+    .support-logos {
+
+        flex-wrap: wrap;
+
+    }
+
+    .support-logos img {
+
+        max-width: 120px;
+
+        height: auto;
+
+    }
+
+}
+</style>
 </head>
 
-<body>
+    <body>
 
-    <!-- NAVBAR -->
+        <!-- NAVBAR -->
 
-    <nav>
-
-        <div class="container nav-inner">
-
-            <div class="logo">
-                ГЕО<span>СОФТ</span>
-            </div>
-
-            <div class="nav-links">
-                <a href="#technology">Технология</a>
-                <a href="#advantages">Преимущества</a>
-                <a href="#tests">Испытания</a>
-                <a href="#future">Развитие</a>
-            </div>
-
-            <a href="https://t.me/smns_id" target="_blank" class="btn">
-                Связаться
-            </a>
-
-        </div>
-
-    </nav>
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="container hero-grid">
-
-            <div>
-
-                <h1>
-                    Фотограмметрическая обработка данных БПЛА
-                </h1>
-
-                <p>
-                    Высокопроизводительное ядро фотограмметрической
-                    обработки аэрофотоснимков с использованием
-                    оптимизированных алгоритмов для снижения
-                    вычислительных затрат.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#tests" class="btn">
-                        Результаты испытаний
-                    </a>
-
-                    <a href="#technology" class="btn btn-secondary">
-                        О технологии
-                    </a>
-
+        <nav>
+        
+            <div class="container nav-inner">
+        
+                <div class="logo">
+                    ГЕО<span>СОФТ</span>
                 </div>
-
+        
+                <div class="nav-links">
+                    <a href="#technology">Технология</a>
+                    <a href="#advantages">Преимущества</a>
+                    <a href="#tests">Испытания</a>
+                    <a href="#future">Развитие</a>
+                </div>
+        
+                <a href="https://t.me/smns_id"
+                   target="_blank"
+                   class="btn">
+        
+                    Связаться
+        
+                </a>
+        
             </div>
-
-            <div class="hero-card">
-
-                <img
-                    src="images/interface.png"
-                    alt="Интерфейс ГЕОСОФТ"
-                    onclick="openModal()"
-                >
-
+        
+        </nav>
+        
+        
+        <!-- HERO -->
+        
+        <section class="hero">
+        
+            <div class="container hero-grid">
+        
+                <div>
+        
+                    <h1>
+                        Фотограмметрическая
+                        обработка данных БПЛА
+                    </h1>
+        
+                    <p>
+                        Высокопроизводительное ядро
+                        фотограмметрической обработки
+                        аэрофотоснимков с использованием
+                        оптимизированных алгоритмов
+                        для снижения вычислительных затрат.
+                    </p>
+        
+                    <div class="hero-buttons">
+        
+                        <a href="#tests" class="btn">
+                            Результаты испытаний
+                        </a>
+        
+                        <a href="#technology"
+                           class="btn btn-secondary">
+        
+                            О технологии
+        
+                        </a>
+        
+                    </div>
+        
+                </div>
+        
+                <div class="hero-card">
+        
+                    <img
+                        src="images/interface.png"
+                        alt="Интерфейс ГЕОСОФТ"
+                        onclick="openModal()"
+                    >
+        
+                </div>
+        
             </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TECHNOLOGY -->
-    
-
+        
+        </section>
     <section id="technology">
 
         <div class="container">
@@ -973,7 +931,8 @@
                     <div class="done">ГОТОВО И ПРОТЕСТИРОВАНО</div>
 
                     <h3>
-                        Фотограмметрическое<br>
+                        Фотограм-<br>
+                        метрическое<br>
                         уравнивание
                     </h3>
                     
@@ -1141,56 +1100,127 @@
                 <h2>Результаты испытаний</h2>
 
                 <p>
-                    Сравнение результатов обработки контрольных точек
-                    с программным обеспечением Photomod
-                    на материалах наземной фотограмметрической
-                    съемки фасада городской обсерватории.
+                    Сравнение результатов фотограмметрической
+                    обработки ГЕОСОФТ наземных снимков
+                    контрольного объекта, аэроснимков
+                    контрольного полигона с БПЛА,
+                    с результатами программного обеспечения
+                    Photomod.
                 </p>
 
             </div>
 
-            <div class="table-wrapper">
+            <div class="results-table-wrapper">
 
-                <table>
-
-                    <thead>
-
-                        <tr>
-                            <th>Метод обработки</th>
-                            <th>СКО X (см)</th>
-                            <th>СКО Y (см)</th>
-                            <th>СКО Z (см)</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td>Метод компланарности</td>
-                            <td class="highlight">0.16 см</td>
-                            <td class="highlight">0.26 см</td>
-                            <td class="highlight">0.43 см</td>
-                        </tr>
-
-                        <tr>
-                            <td>Метод разностей</td>
-                            <td class="highlight">0.16 см</td>
-                            <td class="highlight">0.26 см</td>
-                            <td class="highlight">0.43 см</td>
-                        </tr>
-
-                        <tr>
-                            <td>Photomod</td>
-                            <td>0.36 см</td>
-                            <td>0.31 см</td>
-                            <td>0.58 см</td>
-                        </tr>
-
-                    </tbody>
-
+                <h3 class="results-subtitle">
+                    Наземная фотограмметрическая съемка
+                </h3>
+            
+                <table class="results-table">
+            
+                    <tr>
+                        <th>Метод обработки</th>
+                        <th>СКО X (м)</th>
+                        <th>СКО Y (м)</th>
+                        <th>СКО Z (м)</th>
+                    </tr>
+            
+                    <tr>
+                        <td><strong>Контрольный объект</strong></td>
+                        <td colspan="3">
+                            Фасад городской обсерватории
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            Способ УКп-КВ условие
+                            компланарности
+                            (классич. вариант)
+                        </td>
+            
+                        <td>0.0016</td>
+                        <td>0.0026</td>
+                        <td>0.0043</td>
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            Способ УКп-РК условие
+                            компланарности
+                            (разности координат)
+                        </td>
+            
+                        <td>0.0016</td>
+                        <td>0.0026</td>
+                        <td>0.0043</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Photomod</td>
+            
+                        <td>0.0036</td>
+                        <td>0.0031</td>
+                        <td>0.0058</td>
+                    </tr>
+            
                 </table>
-
+            
+                <h3 class="results-subtitle second-table">
+                    Аэрофотосъемка с БПЛА
+                </h3>
+            
+                <table class="results-table">
+            
+                    <tr>
+                        <th>Метод обработки</th>
+                        <th>СКО X (м)</th>
+                        <th>СКО Y (м)</th>
+                        <th>СКО Z (м)</th>
+                    </tr>
+            
+                    <tr>
+                        <td><strong>Контрольный полигон</strong></td>
+            
+                        <td colspan="3">
+                            г. Чистополь
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            Способ УКп-КВ условие
+                            компланарности
+                            (классич. вариант)
+                        </td>
+            
+                        <td>0.0703</td>
+                        <td>0.0630</td>
+                        <td>0.3237</td>
+                    </tr>
+            
+                    <tr>
+                        <td>
+                            Способ УКп-РК условие
+                            компланарности
+                            (разности координат)
+                        </td>
+            
+                        <td>0.0687</td>
+                        <td>0.0532</td>
+                        <td>0.1138</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Photomod</td>
+            
+                        <td>0.0707</td>
+                        <td>0.0220</td>
+                        <td>0.1215</td>
+                    </tr>
+            
+                </table>
+            
             </div>
 
         </div>
@@ -1322,14 +1352,7 @@
         
         </div>
         
-        <div style="
-            margin-top:60px;
-            padding-top:30px;
-            border-top:1px solid rgba(255,255,255,0.06);
-            color:#7f8cab;
-            font-size:14px;
-            text-align:center;
-        ">
+        <div class="footer-bottom">
             Политика конфиденциальности • © 2026 ГЕОСОФТ Все права защищены.
         </div>
         
