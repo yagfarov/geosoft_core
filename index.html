@@ -445,6 +445,161 @@
             color: var(--muted);
         }
 
+        /* REGISTRATION */
+
+        .registration-section {
+        
+            padding-top: 40px;
+        
+        }
+        
+        .registration-card {
+        
+            display: grid;
+        
+            grid-template-columns: 1.2fr 0.8fr;
+        
+            gap: 50px;
+        
+            align-items: center;
+        
+            background: linear-gradient(180deg, var(--card), var(--card2));
+        
+            border: 1px solid var(--border);
+        
+            border-radius: 28px;
+        
+            padding: 50px;
+        
+            overflow: hidden;
+        
+        }
+        
+        .registration-text h3 {
+        
+            font-size: 42px;
+        
+            margin-bottom: 24px;
+        
+        }
+        
+        .registration-text p {
+        
+            color: var(--muted);
+        
+            font-size: 18px;
+        
+            line-height: 1.8;
+        
+            margin-bottom: 18px;
+        
+        }
+        
+        .registration-badge {
+        
+            display: inline-block;
+        
+            margin-bottom: 24px;
+        
+            padding: 10px 18px;
+        
+            border-radius: 14px;
+        
+            background: rgba(78,161,255,0.14);
+        
+            color: #7cc2ff;
+        
+            font-size: 13px;
+        
+            font-weight: 700;
+        
+            letter-spacing: 1px;
+        
+        }
+        
+        .registration-image {
+        
+            display: flex;
+        
+            justify-content: center;
+        
+        }
+        
+        .registration-image img {
+        
+            width: 100%;
+        
+            max-width: 380px;
+        
+            border-radius: 18px;
+        
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.45);
+        
+            transition: 0.3s;
+        
+        }
+        
+        .registration-image img:hover {
+        
+            transform: scale(1.02);
+        
+        }
+        
+        .contacts-block {
+        
+            margin-top: 30px;
+        
+            padding-top: 24px;
+        
+            border-top: 1px solid rgba(255,255,255,0.08);
+        
+        }
+        
+        .contacts-block h4 {
+        
+            margin-bottom: 18px;
+        
+            font-size: 22px;
+        
+        }
+        
+        .contacts-block p {
+        
+            margin-bottom: 10px;
+        
+        }
+        
+        /* MOBILE */
+        
+        @media (max-width: 900px) {
+        
+            .registration-card {
+        
+                grid-template-columns: 1fr;
+        
+                padding: 36px;
+        
+            }
+        
+        }
+        
+        @media (max-width: 600px) {
+        
+            .registration-text h3 {
+        
+                font-size: 34px;
+        
+            }
+        
+            .registration-card {
+        
+                padding: 28px;
+        
+            }
+        
+        }
+
         /* FOOTER */
 
         footer {
@@ -1340,6 +1495,82 @@
 
         </div>
 
+    </section>
+
+    <!-- REGISTRATION -->
+
+    <section class="registration-section">
+    
+        <div class="container">
+    
+            <div class="registration-card">
+    
+                <div class="registration-text">
+    
+                    <div class="registration-badge">
+                        ГОСУДАРСТВЕННАЯ РЕГИСТРАЦИЯ
+                    </div>
+    
+                    <h3>
+                        Программа зарегистрирована
+                    </h3>
+    
+                    <p>
+                        Программа «Ядро программы построения
+                        и уравнивания аналитической
+                        фототриангуляции на основе условия
+                        компланарности векторов ГеоСофт»
+                        зарегистрирована в Федеральной службе
+                        по интеллектуальной собственности
+                        (Роспатент).
+                    </p>
+    
+                    <p>
+                        Свидетельство о государственной
+                        регистрации программы для ЭВМ
+                        №2026664365 от 14 мая 2026 г.
+                    </p>
+    
+                    <p>
+                        Правообладатель:
+                        ООО «ГЕОСОФТ» (RU)
+                    </p>
+    
+                    <div class="contacts-block">
+    
+                        <h4>Контакты</h4>
+    
+                        <p>
+                            Ягфаров Рустам Рашитович<br>
+                            +7 (999) 169-86-50
+                        </p>
+    
+                        <p>
+                            Безменов Владимир Михайлович<br>
+                            +7 (917) 268-66-50
+                        </p>
+    
+                        <p>
+                            geosoft_comp@mail.ru
+                        </p>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="registration-image">
+    
+                    <img
+                        src="images/rid.png"
+                        alt="Свидетельство о регистрации программы"
+                    >
+    
+                </div>
+    
+            </div>
+    
+        </div>
+    
     </section>
 
     <!-- FOOTER -->
