@@ -995,23 +995,30 @@
     .nav-inner {
 
         height: auto;
-
+    
+        display: flex;
+    
         flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 16px;
+    
+        align-items: stretch;
+    
+        gap: 14px;
     }
 
     .logo {
-        font-size: 24px;
+
+        font-size: 22px;
+    
+        width: 100%;
     }
 
     .hero {
 
         min-height: auto;
-
-        padding-top: 130px;
+    
+        padding-top: 170px;
+    
+        padding-bottom: 60px;
     }
 
     .hero-grid {
@@ -1023,9 +1030,11 @@
 
     .hero h1 {
 
-        font-size: 48px;
-
+        font-size: 42px;
+    
         line-height: 0.95;
+    
+        word-break: break-word;
     }
 
     .hero p {
@@ -1049,15 +1058,32 @@
     .btn {
 
         width: 100%;
-
+    
+        display: flex;
+    
+        justify-content: center;
+    
+        align-items: center;
+    
         text-align: center;
+    
+        padding: 16px 20px;
     }
 
-    .hero-card img {
+    .hero-card {
 
         width: 100%;
-
+    }
+    
+    .hero-card img {
+    
+        width: 100%;
+    
         max-width: 100%;
+    
+        border-radius: 18px;
+    
+        display: block;
     }
 
     .section-title h2 {
